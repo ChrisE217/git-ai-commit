@@ -1,6 +1,6 @@
 # Git AI Commit
 
-[![npm version](https://badge.fury.io/js/git-ai-commit.svg)](https://badge.fury.io/js/git-ai-commit)
+[![npm version](https://badge.fury.io/js/%40chris_glolabs%2Fgit-ai-commit.svg)](https://badge.fury.io/js/%40chris_glolabs%2Fgit-ai-commit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 **Generate concise Git commit messages using the power of local AI models with Ollama.**
