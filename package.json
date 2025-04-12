@@ -1,0 +1,41 @@
+{
+    "name": "git-ai-commit",
+    "version": "0.1.0",
+    "description": "AI-powered git commit message generator using local ollama models",
+    "main": "dist/index.js",
+    "bin": {
+        "git-ai-commit": "./dist/cli/index.js"
+    },
+    "scripts": {
+        "build": "tsc",
+        "start": "node dist/index.js",
+        "dev": "ts-node src/index.ts",
+        "test": "jest",
+        "setup": "ts-node src/scripts/setup.ts",
+        "postinstall": "npm run build && npm run setup"
+    },
+    "keywords": [
+        "git",
+        "commit",
+        "ai",
+        "ollama",
+        "llm"
+    ],
+    "author": {
+        "name": "Chris Ewart",
+        "email": "chris@glolabs.co.uk",
+        "url": "https://github.com/ChrisE217"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "commander": "^11.1.0",
+        "inquirer": "^8.2.5",
+        "chalk": "^4.1.2"
+    },
+    "devDependencies": {
+        "@types/inquirer": "^8.2.5",
+        "@types/node": "^20.9.0",
+        "ts-node": "^10.9.1",
+        "typescript": "^5.2.2"
+    }
+}

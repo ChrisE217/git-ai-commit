@@ -7,6 +7,21 @@
 
 `git-ai-commit` analyzes your staged changes and uses a local large language model (LLM) via [Ollama](https://ollama.com/) to suggest a relevant and brief commit message. Streamline your workflow and let AI handle the first draft of your commit messages!
 
+## Installation
+
+Install the package globally using npm:
+
+```bash
+npm install -g git-ai-commit
+```
+
+The installation process automatically runs a setup script that:
+
+1.  Checks if Git is installed.
+2.  Sets up a global Git alias: `git aic` which executes `git-ai-commit`.
+
+You can now use `git aic` in any Git repository on your system.
+
 ## Features
 
 - ✨ **AI-Powered Commits**: Leverages local LLMs through Ollama for message generation.
@@ -26,21 +41,6 @@ Before you begin, ensure you have the following installed:
     - [Download Ollama](https://ollama.com/download)
     - **Important:** Make sure the Ollama server is running before using `git-ai-commit`. You can typically start it by running `ollama serve` in your terminal.
     - Ensure you have pulled at least one model (e.g., `ollama pull llama3:8b`).
-
-## Installation
-
-Install the package globally using npm:
-
-```bash
-npm install -g git-ai-commit
-```
-
-The installation process automatically runs a setup script that:
-
-1.  Checks if Git is installed.
-2.  Sets up a global Git alias: `git aic` which executes `git-ai-commit`.
-
-You can now use `git aic` in any Git repository on your system.
 
 ## Usage
 
@@ -90,12 +90,14 @@ git-ai-commit commit
 You can customize `git-ai-commit`'s behavior using the `config` command:
 
 ```bash
+git aic config
+# or directly via
 git-ai-commit config
 ```
 
 This will launch an interactive prompt allowing you to configure:
 
-- **Model Selection**: Choose which Ollama model to use (e.g., `llama3:8b`, `mistral`). It attempts to list models available locally if Ollama is running.
+- **Model Selection**: Choose which Ollama model to use (e.g., `llama3:8b`, `mistral`). It attempts to list models available locally if Ollama is running. Ideally choosing a model that will run comfortably on your machine.
 - **Always Accept**: Set to `true` to skip the confirmation step and automatically use the generated commit message. Defaults to `false`.
 - **Timeout**: Set the timeout (in seconds) for requests to the Ollama API. Increase this if you use larger models or have slower hardware. Defaults to 30 seconds.
 - **Custom Prompt**: Allows you to provide your own prompt template for generating commit messages. You can edit the prompt directly in your default text editor.
@@ -112,14 +114,15 @@ Your configuration is saved in `~/.git-ai-commit/config.json`.
   - Increase the timeout using `git-ai-commit config`.
 - **Error: Failed to fetch available models**: This might happen if Ollama isn't running or accessible when you run `git-ai-commit config`. You can still manually type the name of a model you know you have installed.
 
-## Development (Contributing)
+## Clone and run locally
 
-If you want to contribute or run the tool locally:
+If you want to clone and run the tool locally:
 
 1.  Clone the repository.
 2.  Install dependencies: `npm install`
 3.  Build the TypeScript code: `npm run build`
-4.  Run the CLI: `node dist/cli/index.js <command>` or link it for testing `npm link`.
+4.  Link the tool for using `npm link`
+5.  Run the CLI: `git aic <command>`
 
 ## License
 
