@@ -12,7 +12,7 @@
 Install the package globally using npm:
 
 ```bash
-npm install -g git-ai-commit
+npm install -g @chris_glolabs/git-ai-commit
 ```
 
 The installation process automatically runs a setup script that:
