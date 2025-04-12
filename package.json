@@ -1,10 +1,14 @@
 {
     "name": "@chris_glolabs/git-ai-commit",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "AI-powered git commit message generator using local ollama models",
     "main": "dist/index.js",
     "bin": {
         "git-ai-commit": "./dist/cli/index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ChrisE217/git-ai-commit.git"
     },
     "publishConfig": {
         "access": "public"
