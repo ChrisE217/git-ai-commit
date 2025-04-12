@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git AI Commit - AI-Powered Commit Messages</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #5045E4;
+            --primary-dark: #3933b1;
+            --secondary: #05BFDB;
+            --dark: #121212;
+            --light: #FAFAFA;
+            --gray: #888888;
+            --border-radius: 8px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            padding: 20px 0;
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: var(--border-radius);
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(80, 69, 228, 0.1);
+        }
+        
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin-bottom: 60px;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .hero-text {
+            width: 50%;
+        }
+        
+        .hero-image {
+            width: 45%;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+        
+        .hero-badges {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(80, 69, 228, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .feature-icon i {
+            color: var(--primary);
+            font-size: 24px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .feature-card p {
+            color: var(--gray);
+        }
+        
+        .installation {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .installation h3 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .code-block {
+            background-color: var(--dark);
+            color: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            overflow-x: auto;
+            font-family: monospace;
+        }
+        
+        .steps {
+            margin-top: 30px;
+        }
+        
+        .step {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-right: 15px;
+        }
+        
+        .step-content h4 {
+            margin-bottom: 5px;
+        }
+        
+        .step-content p {
+            color: var(--gray);
+        }
+        
+        .usage-section {
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+            padding: 50px 0;
+        }
+        
+        .usage-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .usage-image {
+            width: 50%;
+        }
+        
+        .usage-content {
+            width: 50%;
+        }
+        
+        .usage-content h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .usage-code {
+            background-color: var(--dark);
+            color: white;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin: 20px 0;
+            font-family: monospace;
+        }
+        
+        .toc {
+            position: sticky;
+            top: 100px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .toc h3 {
+            margin-bottom: 15px;
+        }
+        
+        .toc ul {
+            list-style: none;
+        }
+        
+        .toc li {
+            margin-bottom: 10px;
+        }
+        
+        .toc a {
+            text-decoration: none;
+            color: var(--gray);
+            transition: color 0.3s;
+        }
+        
+        .toc a:hover {
+            color: var(--primary);
+        }
+        
+        .cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta .btn {
+            background-color: white;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .cta .btn:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .footer-logo i {
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+        
+        .footer-links h4 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            text-decoration: none;
+            color: var(--gray);
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: var(--gray);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+            }
+            
+            .hero-text, .hero-image {
+                width: 100%;
+            }
+            
+            .hero-text {
+                margin-bottom: 40px;
+            }
+            
+            .usage-container {
+                flex-direction: column;
+            }
+            
+            .usage-content, .usage-image {
+                width: 100%;
+            }
+            
+            .usage-image {
+                margin-bottom: 30px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .footer-links {
+                margin-top: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-code-commit"></i>
+                    <span>Git AI Commit</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#installation">Installation</a></li>
+                    <li><a href="#usage">Usage</a></li>
+                    <li><a href="#docs">Docs</a></li>
+                    <li><a href="https://github.com/ChrisE217/git-ai-commit" class="btn btn-secondary">GitHub</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>AI-Powered Git Commit Messages</h1>
+                <p>Generate concise, relevant commit messages for your Git repositories using local AI models with Ollama. Streamline your workflow and let AI handle the first draft of your commit messages!</p>
+                <a href="#installation" class="btn">Get Started</a>
+                <div class="hero-badges">
+                    <img src="https://badge.fury.io/js/%40chris_glolabs%2Fgit-ai-commit.svg" alt="npm version">
+                    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT">
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://illustrations.popsy.co/white/artificial-intelligence.svg" alt="AI Illustration" width="100%">
+            </div>
+        </div>
+    </section>
+    
+    <section id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Features</h2>
+                <p>Discover what makes Git AI Commit a powerful tool for your development workflow</p>
+            </div>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI-Powered Commits</h3>
+                    <p>Leverages local LLMs through Ollama for intelligent message generation based on your code changes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Local First</h3>
+                    <p>Keep your code private. No data is sent to external servers (besides your local Ollama instance).</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Simple Workflow</h3>
+                    <p>Integrates seamlessly with your Git process via a handy alias (<code>git aic</code>).</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <h3>Configurable</h3>
+                    <p>Choose your preferred Ollama model, set timeouts, customize prompts, and decide whether to auto-accept suggestions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Automatic Setup</h3>
+                    <p>Installs a convenient <code>git aic</code> alias during setup for quick access.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Interactive Confirmation</h3>
+                    <p>Review and confirm the generated message before committing (configurable).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="installation">
+        <div class="container">
+            <div class="section-title">
+                <h2>Installation</h2>
+                <p>Get up and running in minutes</p>
+            </div>
+            <div class="installation">
+                <h3>Quick Install</h3>
+                <div class="code-block">
+                    npm install -g @chris_glolabs/git-ai-commit
+                </div>
+                <p>The installation process automatically sets up a global Git alias: <code>git aic</code> which executes <code>git-ai-commit</code>.</p>
+                
+                <div class="steps">
+                    <h3>Prerequisites</h3>
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Git</h4>
+                            <p>Make sure Git is installed on your system. <a href="https://git-scm.com/downloads" target="_blank">Download Git</a></p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Node.js</h4>
+                            <p>Version 16 or higher recommended. <a href="https://nodejs.org/" target="_blank">Download Node.js</a></p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Ollama</h4>
+                            <p>Needs to be installed and running. <a href="https://ollama.com/download" target="_blank">Download Ollama</a></p>
+                            <p><strong>Important:</strong> Make sure the Ollama server is running before using <code>git-ai-commit</code>. You can typically start it by running <code>ollama serve</code> in your terminal.</p>
+                            <p>Ensure you have pulled at least one model (e.g., <code>ollama pull llama3:8b</code>).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="usage" class="usage-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Usage</h2>
+                <p>Start generating AI-powered commit messages</p>
+            </div>
+            <div class="usage-container">
+                <div class="usage-image">
+                    <img src="https://illustrations.popsy.co/white/developer.svg" alt="Developer" width="100%">
+                </div>
+                <div class="usage-content">
+                    <h3>Getting Started</h3>
+                    <p>Using <code>git-ai-commit</code> is straightforward:</p>
+                    
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Stage your changes</h4>
+                            <p>Make your code changes and stage them using <code>git add</code>.</p>
+                            <div class="usage-code">
+                                git add .
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Generate the commit message</h4>
+                            <p>Run the <code>git aic</code> command.</p>
+                            <div class="usage-code">
+                                git aic
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Review and Confirm</h4>
+                            <p>The tool will connect to your running Ollama instance, analyze the staged diff, and generate a commit message.</p>
+                            <p>It will display the suggested message and ask for your confirmation.</p>
+                            <ul>
+                                <li>Press <code>Enter</code> (or <code>y</code> then <code>Enter</code>) to accept and commit.</li>
+                                <li>Press <code>n</code> then <code>Enter</code> to abort the commit.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="configuration">
+        <div class="container">
+            <div class="section-title">
+                <h2>Configuration</h2>
+                <p>Customize to fit your workflow</p>
+            </div>
+            <div class="installation">
+                <p>You can customize <code>git-ai-commit</code>'s behavior using the <code>config</code> command:</p>
+                <div class="code-block">
+                    git aic config
+                    # or directly via
+                    git-ai-commit config
+                </div>
+                
+                <div class="steps">
+                    <h3>Configuration Options</h3>
+                    <div class="step">
+                        <div class="step-content">
+                            <h4>Model Selection</h4>
+                            <p>Choose which Ollama model to use (e.g., <code>llama3:8b</code>, <code>mistral</code>). It attempts to list models available locally if Ollama is running.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-content">
+                            <h4>Always Accept</h4>
+                            <p>Set to <code>true</code> to skip the confirmation step and automatically use the generated commit message. Defaults to <code>false</code>.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-content">
+                            <h4>Timeout</h4>
+                            <p>Set the timeout (in seconds) for requests to the Ollama API. Increase this if you use larger models or have slower hardware.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-content">
+                            <h4>Custom Prompt</h4>
+                            <p>Allows you to provide your own prompt template for generating commit messages.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="troubleshooting">
+        <div class="container">
+            <div class="section-title">
+                <h2>Troubleshooting</h2>
+                <p>Common issues and their solutions</p>
+            </div>
+            <div class="installation">
+                <div class="step">
+                    <div class="step-content">
+                        <h4>Error: Ollama is not installed</h4>
+                        <p>Make sure you have installed Ollama correctly. See <a href="#installation">Prerequisites</a>.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-content">
+                        <h4>Error: Ollama is not running</h4>
+                        <p>Start the Ollama server, usually by running <code>ollama serve</code> in your terminal.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-content">
+                        <h4>Error: Request timed out / Ollama is taking too long</h4>
+                        <ul>
+                            <li>Your selected model might be too large for your system or the changes are too complex.</li>
+                            <li>Try configuring a smaller model (e.g., <code>llama3:8b</code> instead of <code>llama3:70b</code>) using <code>git-ai-commit config</code>.</li>
+                            <li>Increase the timeout using <code>git-ai-commit config</code>.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-content">
+                        <h4>Error: Failed to fetch available models</h4>
+                        <p>This might happen if Ollama isn't running or accessible when you run <code>git-ai-commit config</code>. You can still manually type the name of a model you know you have installed.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to streamline your Git workflow?</h2>
+            <p>Start using Git AI Commit today and let AI handle the tedious part of writing commit messages!</p>
+            <a href="https://github.com/ChrisE217/git-ai-commit" class="btn">View on GitHub</a>
+            <a href="#installation" class="btn btn-secondary">Install Now</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <i class="fas fa-code-commit"></i>
+                        <span>Git AI Commit</span>
+                    </div>
+                    <p>Generate concise Git commit messages using the power of local AI models with Ollama.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#installation">Installation</a></li>
+                        <li><a href="#usage">Usage</a></li>
+                        <li><a href="#configuration">Configuration</a></li>
+                        <li><a href="#troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://github.com/ChrisE217/git-ai-commit">GitHub Repository</a></li>
+                        <li><a href="https://www.npmjs.com/package/@chris_glolabs/git-ai-commit">npm Package</a></li>
+                        <li><a href="https://ollama.com/">Ollama</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Git AI Commit. Built with ❤️ by <a href="https://github.com/ChrisE217">Chris Ewart</a>. Licensed under MIT.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 
