@@ -1,6 +1,6 @@
 {
     "name": "@chris_glolabs/git-ai-commit",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "description": "AI-powered git commit message generator using local ollama models",
     "main": "dist/index.js",
     "bin": {
