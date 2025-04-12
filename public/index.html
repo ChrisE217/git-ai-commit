@@ -113,9 +113,9 @@
         }
         
         .hero {
-            padding: 80px 0;
+            padding: 50px 0;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            margin-bottom: 60px;
+            margin-bottom: 30px;
         }
         
         .hero-content {
@@ -154,12 +154,12 @@
         }
         
         section {
-            padding: 60px 0;
+            padding: 40px 0;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
         
         .section-title h2 {
@@ -177,8 +177,8 @@
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+            gap: 20px;
+            margin-top: 30px;
         }
         
         .feature-card {
@@ -221,12 +221,12 @@
         .installation {
             background-color: white;
             border-radius: var(--border-radius);
-            padding: 40px;
+            padding: 30px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .installation h3 {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             font-size: 1.8rem;
         }
         
@@ -241,12 +241,12 @@
         }
         
         .steps {
-            margin-top: 30px;
+            margin-top: 20px;
         }
         
         .step {
             display: flex;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         .step-number {
@@ -274,7 +274,7 @@
         .usage-section {
             background-color: #f8f9fa;
             border-radius: var(--border-radius);
-            padding: 50px 0;
+            padding: 40px 0;
         }
         
         .usage-container {
@@ -338,7 +338,7 @@
         
         .cta {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            padding: 80px 0;
+            padding: 50px 0;
             text-align: center;
             color: white;
         }
@@ -484,8 +484,8 @@
                     <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT">
                 </div>
             </div>
-            <div class="hero-image">
-                <img src="https://illustrations.popsy.co/white/artificial-intelligence.svg" alt="AI Illustration" width="100%">
+            <div class="hero-image" style="overflow: hidden;">
+                <img src="demo.gif" alt="Git AI Commit Demo" width="100%" style="transform: scale(2.2); transform-origin: left top; border-radius: var(--border-radius); box-shadow: 0 5px 15px rgba(0,0,0,0.1); max-width: 120%;">
             </div>
         </div>
     </section>
@@ -593,45 +593,43 @@
                 <p>Start generating AI-powered commit messages</p>
             </div>
             <div class="usage-container">
-                <div class="usage-image">
-                    <img src="https://illustrations.popsy.co/white/developer.svg" alt="Developer" width="100%">
-                </div>
-                <div class="usage-content">
-                    <h3>Getting Started</h3>
-                    <p>Using <code>git-ai-commit</code> is straightforward:</p>
-                    
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h4>Stage your changes</h4>
-                            <p>Make your code changes and stage them using <code>git add</code>.</p>
-                            <div class="usage-code">
-                                git add .
+                <div class="usage-content" style="width: 100%;">
+                    <div class="installation">
+                        <h3>Getting Started</h3>
+                        
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Stage your changes</h4>
+                                <p>Make your code changes and stage them using <code>git add</code>.</p>
+                                <div class="usage-code">
+                                    git add .
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h4>Generate the commit message</h4>
-                            <p>Run the <code>git aic</code> command.</p>
-                            <div class="usage-code">
-                                git aic
+                        
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Generate the commit message</h4>
+                                <p>Run the <code>git aic</code> command.</p>
+                                <div class="usage-code">
+                                    git aic
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h4>Review and Confirm</h4>
-                            <p>The tool will connect to your running Ollama instance, analyze the staged diff, and generate a commit message.</p>
-                            <p>It will display the suggested message and ask for your confirmation.</p>
-                            <ul>
-                                <li>Press <code>Enter</code> (or <code>y</code> then <code>Enter</code>) to accept and commit.</li>
-                                <li>Press <code>n</code> then <code>Enter</code> to abort the commit.</li>
-                            </ul>
+                        
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Review and Confirm</h4>
+                                <p>The tool will connect to your running Ollama instance, analyze the staged diff, and generate a commit message.</p>
+                                <p>It will display the suggested message and ask for your confirmation.</p>
+                                <ul>
+                                    <li>Press <code>Enter</code> (or <code>y</code> then <code>Enter</code>) to accept and commit.</li>
+                                    <li>Press <code>n</code> then <code>Enter</code> to abort the commit.</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -646,11 +644,18 @@
                 <p>Customize to fit your workflow</p>
             </div>
             <div class="installation">
-                <p>You can customize <code>git-ai-commit</code>'s behavior using the <code>config</code> command:</p>
-                <div class="code-block">
-                    git aic config
-                    # or directly via
-                    git-ai-commit config
+                <div style="display: flex; gap: 30px; align-items: flex-start; margin-bottom: 30px;">
+                    <div style="flex: 1;">
+                        <p>You can customize <code>git-ai-commit</code>'s behavior using the <code>config</code> command:</p>
+                        <div class="code-block">
+                            git aic config
+                            # or directly via
+                            git-ai-commit config
+                        </div>
+                    </div>
+                    <div style="flex: 1; overflow: hidden;">
+                        <img src="demo-config.gif" alt="Configuration Demo" width="100%" style="transform: scale(2.5); transform-origin: left top; border-radius: var(--border-radius); box-shadow: 0 5px 15px rgba(0,0,0,0.1); max-width: 120%;">
+                    </div>
                 </div>
                 
                 <div class="steps">
@@ -760,7 +765,7 @@
                     <h4>Resources</h4>
                     <ul>
                         <li><a href="https://github.com/ChrisE217/git-ai-commit">GitHub Repository</a></li>
-                        <li><a href="https://www.npmjs.com/package/@chris_glolabs/git-ai-commit">npm Package</a></li>
+                        <li><a href="https://www.npmjs.com/package/@chris_glolabs/git-ai-commit">NPM Package</a></li>
                         <li><a href="https://ollama.com/">Ollama</a></li>
                     </ul>
                 </div>
