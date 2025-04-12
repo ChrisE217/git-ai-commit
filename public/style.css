@@ -202,15 +202,12 @@ nav {
 }
 
 .hero::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: radial-gradient(circle at 20% 50%, rgba(0, 245, 212, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 80% 30%, rgba(255, 61, 113, 0.15) 0%, transparent 30%);
-    z-index: -1;
+    display: none;
+}
+
+.hero-image::before,
+.hero-image::after {
+    display: none;
 }
 
 .hero-content {
@@ -239,34 +236,6 @@ nav {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     transition: all 0.5s ease;
     filter: contrast(110%) brightness(105%);
-}
-
-.hero-image::before {
-    content: "";
-    position: absolute;
-    width: 80%;
-    height: 80%;
-    right: -10%;
-    bottom: -10%;
-    background: var(--tertiary);
-    opacity: 0.2;
-    filter: blur(40px);
-    border-radius: 50%;
-    animation: float 8s ease-in-out infinite;
-}
-
-.hero-image::after {
-    content: "";
-    position: absolute;
-    width: 60%;
-    height: 60%;
-    left: -5%;
-    top: -5%;
-    background: var(--secondary);
-    opacity: 0.15;
-    filter: blur(30px);
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-    animation: morphing 15s ease-in-out infinite alternate;
 }
 
 .hero-text h1 {
@@ -316,12 +285,27 @@ nav {
 section {
     padding: 80px 0;
     position: relative;
+    overflow: visible;
+}
+
+section::before,
+section::after {
+    content: none !important;
 }
 
 .section-title {
     text-align: center;
     margin-bottom: 60px;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-title .tag {
+    margin-bottom: 20px;
+    padding: 6px 16px 6px 24px;
 }
 
 .section-title h2 {
@@ -330,19 +314,6 @@ section {
     margin-bottom: 15px;
     position: relative;
     display: inline-block;
-}
-
-.section-title h2::before {
-    content: "";
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background: var(--tertiary);
-    border-radius: 50%;
-    z-index: -1;
-    opacity: 0.2;
-    left: -20px;
-    top: -10px;
 }
 
 .section-title p {
@@ -452,17 +423,25 @@ section {
     overflow: hidden;
 }
 
+.installation::before,
+.installation::after,
+.usage-section::before,
+.usage-section::after,
+.hero::before,
+.hero::after {
+    display: none;
+}
+
+#installation {
+    position: relative;
+}
+
+#installation::before {
+    content: none; 
+}
+
 .installation::before {
-    content: "";
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    background: var(--tertiary);
-    opacity: 0.1;
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-    bottom: -100px;
-    left: -100px;
-    animation: morphing 15s ease-in-out infinite alternate;
+    display: none;
 }
 
 .installation h3 {
@@ -577,31 +556,6 @@ section {
     padding: 80px 0;
     position: relative;
     overflow: hidden;
-}
-
-.usage-section::before {
-    content: "";
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    background: var(--primary);
-    opacity: 0.05;
-    border-radius: 50%;
-    top: -150px;
-    right: -150px;
-}
-
-.usage-section::after {
-    content: "";
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    background: var(--tertiary);
-    opacity: 0.05;
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-    bottom: -100px;
-    left: -100px;
-    animation: morphing 15s ease-in-out infinite alternate;
 }
 
 .usage-container {
@@ -930,7 +884,6 @@ footer::before {
     }
 }
 
-/* Mobile Responsiveness */
 @media (max-width: 1024px) {
     .hero-text h1 {
         font-size: 3.5rem;
@@ -1042,7 +995,6 @@ footer::before {
     }
 }
 
-/* New styles for interactive elements */
 .cursor-glow {
     position: fixed;
     width: 30px;
@@ -1194,8 +1146,9 @@ footer::before {
 }
 
 .tag {
-    display: inline-block;
-    padding: 6px 14px;
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px 6px 20px;
     background: linear-gradient(135deg, rgba(110, 68, 255, 0.1) 0%, rgba(0, 245, 212, 0.1) 100%);
     border-radius: 20px;
     color: var(--primary);
@@ -1203,6 +1156,8 @@ footer::before {
     font-size: 0.9rem;
     margin-bottom: 15px;
     position: relative;
+    border: 1px solid rgba(110, 68, 255, 0.2);
+    box-shadow: 0 2px 8px rgba(110, 68, 255, 0.1);
 }
 
 .tag::before {
@@ -1212,7 +1167,7 @@ footer::before {
     height: 6px;
     background: var(--primary);
     border-radius: 50%;
-    left: -3px;
+    left: 8px;
     top: 50%;
     transform: translateY(-50%);
 }
@@ -1624,7 +1579,6 @@ footer::before {
     100% { transform: scale(1); }
 }
 
-/* Add custom scrollbar */
 ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
@@ -1643,8 +1597,6 @@ footer::before {
 ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(135deg, var(--primary-dark) 0%, var(--tertiary) 100%);
 }
-
-/* Dark mode toggle button will go here in future version */
 
 .cta-github-btn {
     background-color: var(--primary) !important;
@@ -1669,7 +1621,6 @@ footer::before {
     margin-right: 8px !important;
 }
 
-/* Add a distinct look to the CTA section */
 .cta {
     position: relative;
     z-index: 1;
