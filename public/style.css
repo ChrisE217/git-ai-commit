@@ -65,22 +65,39 @@ nav {
     z-index: 1;
 }
 
-.logo::before {
-    content: '';
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background: var(--tertiary);
-    border-radius: 50%;
-    z-index: -1;
-    opacity: 0.2;
-    transform: translate(-15px, -5px);
-    animation: pulse 3s infinite alternate;
+.logo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, var(--tertiary) 5%, var(--primary) 95%);
+    border-radius: 10px;
+    margin-right: 15px;
+    box-shadow: 0 4px 10px rgba(110, 68, 255, 0.3);
+    transform: rotate(45deg);
+    transition: all 0.3s ease;
 }
 
-.logo i {
-    margin-right: 10px;
-    font-size: 2rem;
+.logo-icon:hover {
+    transform: rotate(0deg);
+    box-shadow: 0 6px 15px rgba(110, 68, 255, 0.5);
+}
+
+.logo-icon i {
+    transform: rotate(-45deg);
+    font-size: 1.5rem;
+    color: white;
+    background: none;
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
+}
+
+.logo:hover .logo-icon {
+    transform: rotate(0deg) scale(1.05);
+}
+
+.logo span {
     background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -349,7 +366,7 @@ section {
     border-radius: var(--border-radius);
     padding: 40px;
     box-shadow: var(--card-shadow);
-    transition: all 0.5s ease;
+    transition: all 0.1s ease;
     position: relative;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.5);
@@ -391,21 +408,6 @@ section {
     overflow: hidden;
 }
 
-.feature-icon::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
-    top: -50%;
-    left: -50%;
-    transform: scale(0);
-    transition: all 0.5s ease;
-}
-
-.feature-card:hover .feature-icon::before {
-    transform: scale(3);
-}
 
 .feature-icon i {
     color: white;
@@ -457,10 +459,10 @@ section {
     height: 200px;
     background: var(--tertiary);
     opacity: 0.1;
-    filter: blur(60px);
-    border-radius: 50%;
-    right: -100px;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
     bottom: -100px;
+    left: -100px;
+    animation: morphing 15s ease-in-out infinite alternate;
 }
 
 .installation h3 {
@@ -789,17 +791,17 @@ footer::before {
     display: flex;
     align-items: center;
     font-weight: 700;
-    font-size: 1.8rem;
-    color: white;
-    margin-bottom: 20px;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
 }
 
-.footer-logo i {
-    margin-right: 10px;
-    font-size: 2rem;
-    background: linear-gradient(135deg, var(--tertiary) 0%, var(--primary) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.footer-logo .logo-icon {
+    width: 36px;
+    height: 36px;
+}
+
+.footer-logo .logo-icon i {
+    font-size: 1.3rem;
 }
 
 .footer-about p {

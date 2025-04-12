@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Git AI Commit - AI-Powered Commit Messages</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='80' height='80' x='10' y='10' rx='10' fill='%236e44ff' transform='rotate(45 50 50)'/%3E%3Cpath d='M50 30 L50 70 M30 50 L70 50' stroke='white' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +18,9 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    <i class="fas fa-code-commit"></i>
+                    <div class="logo-icon">
+                        <i class="fas fa-code-commit"></i>
+                    </div>
                     <span>Git AI Commit</span>
                 </div>
                 <ul class="nav-links">
@@ -57,7 +61,6 @@
         </div>
     </section>
     
-    <!-- Moving installation section before features -->
     <section id="installation">
         <div class="container">
             <div class="section-title">
@@ -95,18 +98,17 @@
                         <div class="step-content">
                             <h4>Ollama</h4>
                             <p>Needs to be installed and running. <a href="https://ollama.com/download" target="_blank">Download Ollama <i class="fas fa-external-link-alt"></i></a></p>
-                            <div class="important-note">
-                                <p><strong>Important:</strong> Make sure the Ollama server is running before using <code>git-ai-commit</code>. You can typically start it by running <code>ollama serve</code> in your terminal.</p>
-                                <p>Ensure you have pulled at least one model (e.g., <code>ollama pull llama3:8b</code>).</p>
-                            </div>
                         </div>
                     </div>
+                </div>
+                <div class="important-note">
+                    <p><strong>Important:</strong> Make sure the Ollama server is running before using <code>git-ai-commit</code>. You can typically start it by running <code>ollama serve</code> in your terminal.</p>
+                    <p>Ensure you have pulled at least one model (e.g., <code>ollama pull llama3:8b</code>).</p>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Moving usage section before features -->
     <section id="usage" class="usage-section">
         <div class="container">
             <div class="section-title">
@@ -149,7 +151,7 @@
                                 <div class="cli-result">
                                     <p class="cli-output">Generating commit message...</p>
                                     <p class="cli-output">Generated commit message:</p>
-                                    <p class="cli-message">Updated main font to Space Grotesk, added JetBrains Mono for code sections, and changed primary and secondary colors. Also, introduced new shadow and glow styles.</p>
+                                    <p class="cli-message">Updated demo images, adjusted layout padding and margins for better UX.</p>
                                     <p class="cli-prompt">? Do you want to use this commit message? (Y/n)</p>
                                 </div>
                                 <div class="action-options">
@@ -175,7 +177,6 @@
         </div>
     </section>
     
-    <!-- Moving features section after installation and usage -->
     <section id="features">
         <div class="container">
             <div class="section-title">
@@ -407,11 +408,8 @@
         </div>
     </footer>
     
-    <!-- Add animations and interactivity -->
     <script>
-        // Simple animation for floating elements
         document.addEventListener('DOMContentLoaded', function() {
-            // Animate floating elements
             const floatElements = document.querySelectorAll('.float-element');
             floatElements.forEach(element => {
                 const speed = element.getAttribute('data-speed');
@@ -425,7 +423,6 @@
                 }, 20);
             });
             
-            // Smooth scroll for navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -435,7 +432,6 @@
                 });
             });
             
-            // Add active class to feature cards on hover for mobile touch support
             const featureCards = document.querySelectorAll('.feature-card');
             featureCards.forEach(card => {
                 card.addEventListener('mouseenter', function() {
