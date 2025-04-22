@@ -32,6 +32,14 @@ export class GitService implements IGitService {
       });
       return stdout.trim() || null;
     } catch (error) {
+      if (error instanceof Error && error.message.includes("maxBuffer")) {
+        throw new Error(
+          `Your staged changes are too large (>10MB). Consider:\n` +
+            `- Committing smaller batches of files\n` +
+            `- Adding binary files to .gitignore\n` +
+            `- Check for large generated files that shouldn't be committed`
+        );
+      }
       throw new Error(
         `Failed to get staged diff: ${this.getErrorMessage(error)}`
       );

@@ -1,6 +1,6 @@
 {
     "name": "@chris_glolabs/git-ai-commit",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "description": "AI-powered git commit message generator using local ollama models",
     "main": "dist/index.js",
     "bin": {
@@ -36,6 +36,7 @@
     },
     "license": "MIT",
     "dependencies": {
+        "@chris_glolabs/git-ai-commit": "^0.1.5",
         "@types/inquirer": "^8.2.5",
         "chalk": "^4.1.2",
         "commander": "^11.1.0",
