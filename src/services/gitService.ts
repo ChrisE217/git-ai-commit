@@ -27,7 +27,9 @@ export class GitService implements IGitService {
 
   public async getStagedDiff(): Promise<string | null> {
     try {
-      const { stdout } = await this.execAsync("git diff --cached");
+      const { stdout } = await this.execAsync("git diff --cached", {
+        maxBuffer: 1024 * 1024 * 10,
+      });
       return stdout.trim() || null;
     } catch (error) {
       throw new Error(
